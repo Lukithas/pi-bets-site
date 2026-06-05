@@ -52,7 +52,7 @@ st.markdown('''
 ''', unsafe_allow_html=True)
 
 st.sidebar.markdown("---")
-filtro_genero = st.sidebar.multiselect("Filtrar por Género:", ['Masculino', 'Feminino'], default=['Masculino', 'Feminino'])
+filtro_genero = st.sidebar.multiselect("Filtrar por Gênero:", ['Masculino', 'Feminino'], default=['Masculino', 'Feminino'])
 idade_slider = st.sidebar.slider("Faixa Etária:", 18, 65, (18, 65))
 st.sidebar.markdown("---")
 
@@ -191,7 +191,7 @@ with tab2:
     st.download_button("📥 Baixar CSV (SUS)", data=convert_csv(df_pacientes), file_name='dados_sus.csv', mime='text/csv')
     
     st.markdown("---")
-    st.subheader("2. Pesquisa Equipa")
+    st.subheader("2. Pesquisa Equipe")
     st.dataframe(df_consolidado, use_container_width=True)
     st.download_button("📥 Baixar CSV (Equipa)", data=convert_csv(df_consolidado), file_name='dados_equipa.csv', mime='text/csv')
 
