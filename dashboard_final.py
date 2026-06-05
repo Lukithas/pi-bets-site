@@ -82,7 +82,7 @@ def get_dados_consumidor_local():
     df_mock = pd.DataFrame({'Problema': ['Saque', 'Publicidade', 'Bloqueio', 'Cobrança', 'Bónus'], 'Quantidade': [1450, 980, 750, 620, 410]})
     return df_mock, False
 
-@st.cache_data(show_spinner="A carregar pesquisa da equipa...")
+@st.cache_data(show_spinner="Carregando pesquisa da equipe...")
 def get_dados_consolidados_csv():
     caminho_csv = 'dados_apostas_consolidado.csv'
     if os.path.exists(caminho_csv):
@@ -111,7 +111,7 @@ if not df_pacientes.empty:
 # =====================================================================
 # 4. DASHBOARD E GRÁFICOS
 # =====================================================================
-st.markdown("<h1>📊 Painel Analítico: Ludopatia & BETs</h1><p style='color: #64748b; font-size: 1.1rem;'>Análise técnica sobre o impacto das apostas online na estrutura socioeconómica.</p>", unsafe_allow_html=True)
+st.markdown("<h1>📊 Painel Analítico: Ludopatia & BETs</h1><p style='color: #64748b; font-size: 1.1rem;'>Análise técnica sobre o impacto das apostas online na estrutura socioeconômica.</p>", unsafe_allow_html=True)
 st.markdown('''<div class="kpi-container"><div class="kpi-box danger"><div class="kpi-label">Apostadores Endividados</div><div class="kpi-value">86%</div><div class="kpi-label" style="text-transform:none">Fonte: Serasa/Locomotiva</div></div><div class="kpi-box danger"><div class="kpi-label">Ideação Suicida</div><div class="kpi-value">80%</div><div class="kpi-label" style="text-transform:none">Pacientes em Tratamento</div></div><div class="kpi-box"><div class="kpi-label">Volume Anual Estimado</div><div class="kpi-value">R$ 120 Bi</div><div class="kpi-label" style="text-transform:none">Mercado no Brasil</div></div><div class="kpi-box"><div class="kpi-label">Perfil Jovem</div><div class="kpi-value">56%</div><div class="kpi-label" style="text-transform:none">18 a 39 anos</div></div></div>''', unsafe_allow_html=True)
 
 tab1, tab2 = st.tabs(["📈 Dashboard Visual", "🗄️ Bases de Dados"])
@@ -146,7 +146,7 @@ with tab1:
 
         fig4, ax4 = plt.subplots(figsize=(6, 3))
         sns.boxplot(data=df_pacientes, x='Genero', y='Divida_Acumulada', ax=ax4, palette="muted")
-        render_card(col4, "4. Dívida/Género", "Impacto", "Variável", fig4, "<strong>Análise:</strong> Dispersão maior em homens.")
+        render_card(col4, "4. Dívida/Gênero", "Impacto", "Variável", fig4, "<strong>Análise:</strong> Dispersão maior em homens.")
 
     col5, col6 = st.columns(2)
     if not df_pacientes.empty and 'Renda_Mensal' in df_pacientes.columns:
@@ -193,6 +193,6 @@ with tab2:
     st.markdown("---")
     st.subheader("2. Pesquisa Equipe")
     st.dataframe(df_consolidado, use_container_width=True)
-    st.download_button("📥 Baixar CSV (Equipa)", data=convert_csv(df_consolidado), file_name='dados_equipa.csv', mime='text/csv')
+    st.download_button("📥 Baixar CSV (Equipe)", data=convert_csv(df_consolidado), file_name='dados_equipe.csv', mime='text/csv')
 
 st.markdown('''<div style="text-align: center; margin-top: 50px; border-top: 1px solid #e2e8f0; padding-top: 20px; color: #64748b; font-size: 0.85rem;"><strong>Projeto Integrador I - Ciência da Computação | UniCEUB</strong><br><br><a href="https://github.com/CaioB1ima" target="_blank" style="color: #a7197f; text-decoration: none; font-weight: 600; margin: 0 10px;">Caio Lima</a> | <a href="https://github.com/Gadshx" target="_blank" style="color: #a7197f; text-decoration: none; font-weight: 600; margin: 0 10px;">Guilherme Augusto</a> | <a href="https://github.com/Gustavox0207" target="_blank" style="color: #a7197f; text-decoration: none; font-weight: 600; margin: 0 10px;">Gustavo Albuquerque</a> | <a href="https://github.com/Lukithas" target="_blank" style="color: #a7197f; text-decoration: none; font-weight: 600; margin: 0 10px;">Lucas Bretas</a> | <a href="https://github.com/Tweuz" target="_blank" style="color: #a7197f; text-decoration: none; font-weight: 600; margin: 0 10px;">Mateus Onival</a></div>''', unsafe_allow_html=True)
